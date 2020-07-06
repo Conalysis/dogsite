@@ -94,8 +94,16 @@ app.post('/upload', (req,res)=>{
 app.post('/dog', function (request, response) {   
     console.log('adding a dog')
     dogs[request.body.name] = request.body
-    response.send('dog has been saved')
+    console.log(dogs)
     saveData() 
+/*
+    upload(request,response, (err)  => {
+        //there are currently no validation (is there a file??)
+        console.log(request.photo);
+        response.send('all saved')
+    })
+    */
+   response.send('dog saved success')
     return;
 })
 
