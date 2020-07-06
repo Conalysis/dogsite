@@ -2,10 +2,9 @@
 window.onload = () => {
 
 //button 
-    document.getElementById('saveDog').addEventListener('click', logDog)
+    document.getElementById('saveDog').addEventListener('click', savephoto) //remember to add log dog when upload works
 
     // assign a click event to the saveDog button
-  //  document.getElementById('saveDog').onclick = logDog
 };
 
 const logDog = async (ev)  => {
@@ -19,14 +18,20 @@ const logDog = async (ev)  => {
     dob: document.getElementById('dob').value,
     colour: document.getElementById('colour').value,
     votes: 0,
-    photo: document.getElementById('profilepic').value
-
   }
+
   const response = await axios.post('/dog', dogs);
 
   alert(`${document.getElementById('name').value} is signed up, Happy Voting!`)
   window.location = ('/index.html')
-  
 
-  document.querySelector('form').reset(); 
   }
+
+const savephoto = async (ev) => {
+  ev.preventDefault();
+  
+  const photo = document.getElementById('photo').value
+  console.log(photo)
+  const response = await axios.post('/upload', photo)
+  
+}

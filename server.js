@@ -36,7 +36,7 @@ const saveData = () => {
     }
 }
 
-//check file type
+//check file type not current using
 function checkFileType(file,cb){
     //Allowed extensions
     const filetypes = /jpeg|jpg|png|gif|json/;
@@ -83,7 +83,6 @@ const dogs = JSON.parse(fs.readFileSync('dogData.json'));// loads the data file
 
 app.post('/upload', (req,res)=>{
     upload(req,res, (err)  => {
-
         //there are currently no validation (is there a file??)
       console.log(req.file);
      res.send('file uploaded')
@@ -92,10 +91,7 @@ app.post('/upload', (req,res)=>{
 
 
 // adds a dog to dogData.Json    
-app.post('/dog', function (request, response) {
-
-    upload()
-    
+app.post('/dog', function (request, response) {   
 
     console.log('adding a dog')
     dogs[request.body.name] = request.body
