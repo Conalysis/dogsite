@@ -84,7 +84,7 @@ const dogs = JSON.parse(fs.readFileSync('dogData.json'));// loads the data file
 app.post('/upload', (req,res)=>{
     upload(req,res, (err)  => {
         //there are currently no validation (is there a file??)
-      console.log(req.file);
+      console.log(req.photo);
      res.send('file uploaded')
     })
 })
@@ -92,10 +92,9 @@ app.post('/upload', (req,res)=>{
 
 // adds a dog to dogData.Json    
 app.post('/dog', function (request, response) {   
-
     console.log('adding a dog')
     dogs[request.body.name] = request.body
-    response.send('data has been saved')
+    response.send('dog has been saved')
     saveData() 
     return;
 })
